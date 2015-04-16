@@ -1,6 +1,7 @@
 package com.tracebucket.x1.dictionary.api.domain.jpa.impl;
 
 import com.tracebucket.tron.ddd.domain.BaseEntity;
+import com.tracebucket.tron.ddd.domain.BaseValueObject;
 import com.tracebucket.x1.dictionary.api.domain.Timezone;
 import com.tracebucket.x1.dictionary.api.domain.TimezoneType;
 
@@ -9,9 +10,8 @@ import javax.persistence.*;
 /**
  * Created by ffl on 20-11-2014.
  */
-@Entity
-@Table(name = "TIMEZONE")
-public class DefaultTimezone extends BaseEntity implements Timezone{
+@Embeddable
+public class DefaultTimezone extends BaseValueObject implements Timezone{
 
     @Column(name = "NAME", nullable = false)
     @Basic(fetch = FetchType.EAGER)

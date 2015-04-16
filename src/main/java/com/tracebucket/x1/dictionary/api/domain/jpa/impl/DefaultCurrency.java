@@ -14,19 +14,19 @@ import javax.persistence.FetchType;
 @Embeddable
 public class DefaultCurrency extends BaseValueObject implements Currency{
 
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "NAME", nullable = false, length = 200)
     @Basic(fetch = FetchType.EAGER)
     private String name;
 
-    @Column(name = "ISO_4217_CODE")
+    @Column(name = "ISO_4217_CODE", length = 100)
     @Basic(fetch = FetchType.EAGER)
     private String iso4217Code;
 
-    @Column(name = "SUB_UNIT_1_10")
+    @Column(name = "SUB_UNIT_1_10", length = 100)
     @Basic(fetch = FetchType.EAGER)
     private String subUnit110;
 
-    @Column(name = "IMAGE")
+    @Column(name = "IMAGE", length = 200)
     @Basic(fetch = FetchType.EAGER)
     private String image;
 
