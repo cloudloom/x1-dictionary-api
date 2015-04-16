@@ -1,16 +1,18 @@
 package com.tracebucket.x1.dictionary.api.domain.jpa.impl;
 
-import com.tracebucket.tron.ddd.domain.BaseEntity;
+import com.tracebucket.tron.ddd.domain.BaseValueObject;
 import com.tracebucket.x1.dictionary.api.domain.Currency;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
 
 /**
  * Created by ffl on 20-11-2014.
  */
-@Entity
-@Table(name = "CURRENCY")
-public class DefaultCurrency extends BaseEntity implements Currency{
+@Embeddable
+public class DefaultCurrency extends BaseValueObject implements Currency{
 
     @Column(name = "NAME", nullable = false)
     @Basic(fetch = FetchType.EAGER)
