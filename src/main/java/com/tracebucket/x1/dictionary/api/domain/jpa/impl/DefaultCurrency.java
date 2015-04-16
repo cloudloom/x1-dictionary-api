@@ -2,11 +2,9 @@ package com.tracebucket.x1.dictionary.api.domain.jpa.impl;
 
 import com.tracebucket.tron.ddd.domain.BaseValueObject;
 import com.tracebucket.x1.dictionary.api.domain.Currency;
+import com.tracebucket.x1.dictionary.api.domain.CurrencyType;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.FetchType;
+import javax.persistence.*;
 
 /**
  * Created by ffl on 20-11-2014.
@@ -29,6 +27,10 @@ public class DefaultCurrency extends BaseValueObject implements Currency{
     @Column(name = "IMAGE", length = 200)
     @Basic(fetch = FetchType.EAGER)
     private String image;
+
+    @Column(name = "EMAIL_TYPE", nullable = false, columnDefinition = "ENUM('BASE', 'OPTIONAL') default 'BASE'")
+    @Enumerated(EnumType.STRING)
+    private CurrencyType currencyType;
 
     public String getName() {
         return name;
@@ -60,6 +62,14 @@ public class DefaultCurrency extends BaseValueObject implements Currency{
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public CurrencyType getCurrencyType() {
+        return currencyType;
+    }
+
+    public void setCurrencyType(CurrencyType currencyType) {
+        this.currencyType = currencyType;
     }
 
     @Override
