@@ -1,6 +1,5 @@
 package com.tracebucket.x1.dictionary.api.domain.jpa.impl;
 
-import com.tracebucket.tron.ddd.domain.BaseEntity;
 import com.tracebucket.tron.ddd.domain.BaseValueObject;
 import com.tracebucket.x1.dictionary.api.domain.Timezone;
 import com.tracebucket.x1.dictionary.api.domain.TimezoneType;
