@@ -53,6 +53,10 @@ public class DefaultPerson extends BaseEntity implements Person {
     @Column(name = "TYPE", nullable = false, columnDefinition = "ENUM('TECHNICAL','ADMINISTRATIVE') default 'ADMINISTRATIVE'")
     private Set<PersonType> personTypes = new HashSet<PersonType>();
 
+    @Column(name = "DEFAULT_CONTACT_PERSON", nullable = false, columnDefinition = "boolean default true")
+    @Basic(fetch = FetchType.EAGER)
+    private boolean defaultContactPerson;
+
     public DefaultPerson(){
 
     }
@@ -119,6 +123,14 @@ public class DefaultPerson extends BaseEntity implements Person {
 
     public void setPersonTypes(Set<PersonType> personTypes) {
         this.personTypes = personTypes;
+    }
+
+    public boolean isDefaultContactPerson() {
+        return defaultContactPerson;
+    }
+
+    public void setDefaultContactPerson(boolean defaultContactPerson) {
+        this.defaultContactPerson = defaultContactPerson;
     }
 
     @Override
