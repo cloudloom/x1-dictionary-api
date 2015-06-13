@@ -7,7 +7,8 @@ package com.tracebucket.x1.dictionary.api.domain;
 public enum PhoneType {
     MOBILE("Mobile","MOBILE"),
     WORK("Work","WORK"),
-    HOME("Home","HOME");
+    HOME("Home","HOME"),
+    FAX("FAX","FAX");
 
     private final String phoneType;
     private final String abbreviation;
