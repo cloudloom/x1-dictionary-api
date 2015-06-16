@@ -1,7 +1,7 @@
 # x1-dictionary-api
 
 A Generic attempt to demistify CRM as a stand alone microservice  with a simple model and flat relations.
-The final outcome of this project could be integrated with other micro service kernels from our repo [Tracebucket](www.github.com/tracebucket)
+The final outcome of this project could be integrated with other micro service kernels from [Tracebucket](www.github.com/tracebucket)
 ## Supported Entities
 1. Person
   1. Address
