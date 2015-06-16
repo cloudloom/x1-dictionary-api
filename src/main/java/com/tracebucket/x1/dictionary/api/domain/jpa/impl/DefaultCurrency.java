@@ -28,7 +28,6 @@ public class DefaultCurrency extends BaseValueObject implements Currency{
     @Basic(fetch = FetchType.EAGER)
     private String image;
 
-
     @Column(name = "CURRENCY_TYPE", nullable = false, columnDefinition = "ENUM('BASE', 'OPTIONAL') default 'BASE'")
     @Enumerated(EnumType.STRING)
     private CurrencyType currencyType;
