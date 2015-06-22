@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by sadath on 22-Jun-2015.
  */
 @Embeddable
-public class DefaultValidity extends BaseValueObject implements Validity {
+public class DefaultValidity /*extends BaseValueObject */implements Validity {
     @Column(name = "VALID_FROM")
     @Basic(fetch = FetchType.EAGER)
     @Temporal(TemporalType.TIMESTAMP)
