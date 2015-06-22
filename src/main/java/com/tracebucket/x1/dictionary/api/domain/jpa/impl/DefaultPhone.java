@@ -17,7 +17,7 @@ public class DefaultPhone extends BaseValueObject implements Phone{
     @Basic(fetch = FetchType.EAGER)
     private Integer extension;
 
-    @Column(name = "PHONE_TYPE", nullable = false, columnDefinition = "ENUM('MOBILE', 'WORK', 'HOME') default 'WORK'")
+    @Column(name = "PHONE_TYPE", nullable = false, columnDefinition = "ENUM('MOBILE', 'WORK', 'HOME', 'FAX') default 'WORK'")
     @Enumerated(EnumType.STRING)
     private PhoneType phoneType;
 
