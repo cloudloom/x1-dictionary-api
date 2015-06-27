@@ -172,11 +172,11 @@ public class DefaultAddress extends BaseValueObject implements Address {
         result = 31 * result + (building != null ? building.hashCode() : 0);
         result = 31 * result + (street != null ? street.hashCode() : 0);
         result = 31 * result + (region != null ? region.hashCode() : 0);
-        result = 31 * result + city.hashCode();
-        result = 31 * result + district.hashCode();
-        result = 31 * result + state.hashCode();
-        result = 31 * result + country.hashCode();
-        result = 31 * result + zip.hashCode();
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (district != null ? district.hashCode() : 0);
+        result = 31 * result + (state != null ? state.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (zip != null ? zip.hashCode() : 0);
         return result;
     }
 }
