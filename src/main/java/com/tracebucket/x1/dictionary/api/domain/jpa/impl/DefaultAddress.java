@@ -29,7 +29,7 @@ public class DefaultAddress extends BaseValueObject implements Address {
     @Basic(fetch = FetchType.EAGER)
     private String city;
 
-    @Column(name = "DISTRICT", nullable = false, length = 75)
+    @Column(name = "DISTRICT", length = 75)
     @Basic(fetch = FetchType.EAGER)
     private String district;
 
