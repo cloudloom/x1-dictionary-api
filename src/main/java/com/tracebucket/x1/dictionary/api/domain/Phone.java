@@ -5,9 +5,9 @@ package com.tracebucket.x1.dictionary.api.domain;
  * @since 11-04-2014
  */
 public interface Phone {
-	Long getNumber();
+	String getNumber();
 
-	Integer getExtension();
+	String getExtension();
 
 	PhoneType getPhoneType();
 

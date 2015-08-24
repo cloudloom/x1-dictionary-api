@@ -11,11 +11,11 @@ public class DefaultPhone extends BaseValueObject implements Phone{
 
     @Column(name = "NUMBER")
     @Basic(fetch = FetchType.EAGER)
-    private Long number;
+    private String number;
 
     @Column(name = "EXTENSION")
     @Basic(fetch = FetchType.EAGER)
-    private Integer extension;
+    private String extension;
 
     @Column(name = "PHONE_TYPE", nullable = false, columnDefinition = "ENUM('MOBILE', 'WORK', 'HOME', 'FAX') default 'WORK'")
     @Enumerated(EnumType.STRING)
@@ -29,19 +29,21 @@ public class DefaultPhone extends BaseValueObject implements Phone{
 
     }
 
-    public Long getNumber() {
+    @Override
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Long number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public Integer getExtension() {
+    @Override
+    public String getExtension() {
         return extension;
     }
 
-    public void setExtension(Integer extension) {
+    public void setExtension(String extension) {
         this.extension = extension;
     }
 
