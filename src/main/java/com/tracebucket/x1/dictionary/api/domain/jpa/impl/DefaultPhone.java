@@ -3,6 +3,7 @@ package com.tracebucket.x1.dictionary.api.domain.jpa.impl;
 import com.tracebucket.tron.ddd.domain.BaseValueObject;
 import com.tracebucket.x1.dictionary.api.domain.Phone;
 import com.tracebucket.x1.dictionary.api.domain.PhoneType;
+import com.tracebucket.x1.dictionary.api.domain.enums.converter.PhoneTypeConverter;
 
 import javax.persistence.*;
 
@@ -17,8 +18,8 @@ public class DefaultPhone extends BaseValueObject implements Phone{
     @Basic(fetch = FetchType.EAGER)
     private String extension;
 
-    @Column(name = "PHONE_TYPE", nullable = false, columnDefinition = "ENUM('MOBILE', 'WORK', 'HOME', 'FAX') default 'WORK'")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "PHONE_TYPE")
+    @Convert(converter = PhoneTypeConverter.class)
     private PhoneType phoneType;
 
     @Column(name = "DEFAULT_PHONE", nullable = false, columnDefinition = "boolean default true")

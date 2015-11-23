@@ -2,6 +2,10 @@ package com.tracebucket.x1.dictionary.api.domain.jpa.impl;
 
 import com.tracebucket.tron.ddd.domain.BaseEntity;
 import com.tracebucket.x1.dictionary.api.domain.*;
+import com.tracebucket.x1.dictionary.api.domain.enums.converter.EmailTypeConverter;
+import com.tracebucket.x1.dictionary.api.domain.enums.converter.GenderTypeConverter;
+import com.tracebucket.x1.dictionary.api.domain.enums.converter.PersonTypeConverter;
+import com.tracebucket.x1.dictionary.api.domain.enums.converter.PhoneTypeConverter;
 
 import javax.persistence.*;
 import java.util.*;
@@ -22,8 +26,8 @@ public class DefaultPerson extends BaseEntity implements Person {
     @Basic(fetch = FetchType.EAGER)
     private Date birthDay;
 
-    @Column(name = "GENDER", nullable = false,columnDefinition = "ENUM('MALE', 'FEMALE') default 'MALE'")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "GENDER")
+    @Convert(converter = GenderTypeConverter.class)
     private Gender gender;
 
     @Column(name = "IMAGE")
@@ -34,23 +38,22 @@ public class DefaultPerson extends BaseEntity implements Person {
     @CollectionTable(name = "PERSON_EMAIL",
             joinColumns = @JoinColumn(name = "PERSON__ID"))
     @MapKeyColumn(name = "EMAIL_ID", nullable = false)
-    @Column(name = "EMAIL_TYPE", nullable = false, columnDefinition = "ENUM('PERSONAL','BUSINESS') default 'BUSINESS'")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "EMAIL_TYPE")
+    //@Convert(converter = EmailTypeConverter.class)
     private Map<String, EmailType> emails = new HashMap<String, EmailType>(0);
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "PERSON_PHONE",
-            joinColumns = @JoinColumn(name = "PERSON__ID"))
+    @CollectionTable(name = "PERSON_PHONE", joinColumns = @JoinColumn(name = "PERSON__ID"))
     @MapKeyColumn(name = "PHONE_NUMBER", nullable = false)
-    @Column(name = "PHONE_TYPE", nullable = false, columnDefinition = "ENUM('MOBILE','WORK','HOME') default 'MOBILE'")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "PHONE_TYPE")
+    //@Convert(converter = PhoneTypeConverter.class)
     private Map<String, PhoneType> phones = new HashMap<String, PhoneType>(0);
 
 
     @ElementCollection(fetch = FetchType.EAGER)
     @JoinTable(name = "PERSON_TYPE", joinColumns = @JoinColumn(name = "PERSON__ID"))
-    @Enumerated(EnumType.STRING)
-    @Column(name = "TYPE", nullable = false, columnDefinition = "ENUM('TECHNICAL','ADMINISTRATIVE') default 'ADMINISTRATIVE'")
+    @Convert(converter = PersonTypeConverter.class)
+    @Column(name = "TYPE")
     private Set<PersonType> personTypes = new HashSet<PersonType>();
 
     @Column(name = "DEFAULT_CONTACT_PERSON", nullable = false, columnDefinition = "boolean default true")

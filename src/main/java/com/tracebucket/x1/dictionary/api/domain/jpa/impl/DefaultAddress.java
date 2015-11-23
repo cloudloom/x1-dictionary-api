@@ -3,6 +3,7 @@ package com.tracebucket.x1.dictionary.api.domain.jpa.impl;
 import com.tracebucket.tron.ddd.domain.BaseValueObject;
 import com.tracebucket.x1.dictionary.api.domain.Address;
 import com.tracebucket.x1.dictionary.api.domain.AddressType;
+import com.tracebucket.x1.dictionary.api.domain.enums.converter.AddressTypeConverter;
 
 import javax.persistence.*;
 
@@ -45,8 +46,8 @@ public class DefaultAddress extends BaseValueObject implements Address {
     @Basic(fetch = FetchType.EAGER)
     private String zip;
 
-    @Column(name = "ADDRESS_TYPE", nullable = false, columnDefinition = "ENUM('HEAD_OFFICE','BRANCH') default 'HEAD_OFFICE'")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "ADDRESS_TYPE")
+    @Convert(converter = AddressTypeConverter.class)
     private AddressType addressType;
 
     @Column(name = "DEFAULT_ADDRESS", nullable = false, columnDefinition = "boolean default true")

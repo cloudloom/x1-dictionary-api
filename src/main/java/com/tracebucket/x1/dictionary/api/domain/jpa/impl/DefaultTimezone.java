@@ -3,6 +3,7 @@ package com.tracebucket.x1.dictionary.api.domain.jpa.impl;
 import com.tracebucket.tron.ddd.domain.BaseValueObject;
 import com.tracebucket.x1.dictionary.api.domain.Timezone;
 import com.tracebucket.x1.dictionary.api.domain.TimezoneType;
+import com.tracebucket.x1.dictionary.api.domain.enums.converter.TimezoneTypeConverter;
 
 import javax.persistence.*;
 
@@ -28,8 +29,8 @@ public class DefaultTimezone extends BaseValueObject implements Timezone{
     @Basic(fetch = FetchType.EAGER)
     private String image;
 
-    @Column(name = "TIMEZONE_TYPE", nullable = false, columnDefinition = "ENUM('DEFAULT','OPTIONAL', 'OPTION_1', 'OPTION_2') default 'DEFAULT'")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "TIMEZONE_TYPE")
+    @Convert(converter = TimezoneTypeConverter.class)
     private TimezoneType timezoneType;
 
     public String getName() {

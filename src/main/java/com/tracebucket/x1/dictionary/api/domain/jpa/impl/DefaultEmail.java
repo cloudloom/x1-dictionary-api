@@ -3,6 +3,7 @@ package com.tracebucket.x1.dictionary.api.domain.jpa.impl;
 import com.tracebucket.tron.ddd.domain.BaseValueObject;
 import com.tracebucket.x1.dictionary.api.domain.Email;
 import com.tracebucket.x1.dictionary.api.domain.EmailType;
+import com.tracebucket.x1.dictionary.api.domain.enums.converter.EmailTypeConverter;
 
 import javax.persistence.*;
 
@@ -13,8 +14,8 @@ public class DefaultEmail extends BaseValueObject implements Email{
     @Basic(fetch = FetchType.EAGER)
     private String email;
 
-    @Column(name = "EMAIL_TYPE", nullable = false, columnDefinition = "ENUM('PERSONAL', 'BUSINESS') default 'BUSINESS'")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "EMAIL_TYPE")
+    @Convert(converter = EmailTypeConverter.class)
     private EmailType emailType;
 
     @Column(name = "DEFAULT_EMAIL", nullable = false, columnDefinition = "boolean default true")
