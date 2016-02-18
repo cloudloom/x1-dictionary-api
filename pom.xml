@@ -6,7 +6,7 @@
 
     <groupId>com.tracebucket.x1.dictionary</groupId>
     <artifactId>x1-dictionary-api</artifactId>
-    <version>1.6</version>
+    <version>1.7</version>
     <packaging>jar</packaging>
     <name>x1-dictionary-api</name>
     <description>X1 Dictionary API</description>

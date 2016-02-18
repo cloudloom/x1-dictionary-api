@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Embeddable
 public class DefaultPhone extends BaseValueObject implements Phone{
 
-    @Column(name = "NUMBER")
+    @Column(name = "NUMBER", nullable = false)
     @Basic(fetch = FetchType.EAGER)
     private String number;
 
